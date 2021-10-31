@@ -5,17 +5,22 @@ import Nav from '../layout/Nav'
 type IMainProps = {
   meta: ReactNode;
   children: ReactNode;
+  classes?: string;
 };
 
-const Main = ({ meta, children }: IMainProps) => (
-  <div className="w-full antialiased">
-    <div className="max-w-screen-md mx-auto">
+const base = "flex flex-col w-full h-screen mx-auto antialiased"
+
+const Main = ({ meta, children, classes }: IMainProps) => {
+
+  const classNames = `${base} ${classes}`
+  return (
+    <div className={classNames}>
       {meta}
       <Nav />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
-  </div>
-);
+  )
+};
 
 export { Main };

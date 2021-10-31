@@ -1,25 +1,31 @@
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 import PrayerTimes from '../components/PrayerTimes'
+import { Button } from '@mantine/core';
+import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
+import React from 'react';
 
 const Index = () => {
   return (
     <Main meta={<Meta />}>
-      <main className="px-3 py-4 text-gray-200 bg-blue-500">
-        {/* <h1 className="text-2xl font-bold">London</h1> */}
-        <section className="text-center">
-          {/* next prayer  & countdown*/}
-          <h2 className="text-2xl font-bold">-10:47:59</h2>
-          <h3 className="font-semibold">05:12</h3>
-          {/* <span className="text-sm">31 Oct</span> */}
-        </section>
-        <section className="mt-4">
-          {/* prayer times */}
-          <PrayerTimes />
-        </section>
-        <section>
-          {/* controls */}
-        </section>
+      <main className="h-full px-3 text-gray-200 bg-gray-800 md:py-10">
+        <div className="max-w-screen-md md:mx-auto">
+          <section className="mt-6 text-center md:mt-0">
+            <h2 className="text-2xl font-bold">-10:47:59</h2>
+            <h3 className="font-semibold">05:12</h3>
+          </section>
+          <section className="mt-6 md:mt-8">
+            <PrayerTimes />
+          </section>
+          <section className="grid grid-cols-2 gap-2 mt-4">
+            <div className="grid">
+              <Button leftIcon={<FiArrowLeft />} className="bg-gray-900 rounded-sm h-9">Previous</Button>
+            </div>
+            <div className="grid">
+              <Button rightIcon={<FiArrowRight />} className="bg-gray-900 rounded-sm h-9">Next</Button>
+            </div>
+          </section>
+        </div>
       </main>
     </Main>
   );
