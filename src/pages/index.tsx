@@ -8,7 +8,7 @@ import React from 'react';
 const Index = () => {
   return (
     <Main meta={<Meta />}>
-      <main className="h-full px-3 text-gray-200 bg-gray-800 md:py-10">
+      <main className="h-full px-3 text-gray-200 bg-gray-dark md:py-10">
         <div className="max-w-screen-md md:mx-auto">
           <section className="mt-6 text-center md:mt-0">
             <h2 className="text-2xl font-bold">-10:47:59</h2>
@@ -17,7 +17,7 @@ const Index = () => {
           <section className="mt-6 md:mt-8">
             <PrayerTimes />
           </section>
-          <section className="grid grid-cols-2 gap-2 mt-4">
+          <section className="grid grid-cols-2 gap-2 mt-2">
             <div className="grid">
               <Button leftIcon={<FiArrowLeft />} className="bg-gray-900 rounded-sm h-9">Previous</Button>
             </div>
