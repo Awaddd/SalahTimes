@@ -1,4 +1,7 @@
-const PrayerTimes = () => {
+const PrayerTimes = ({ prayerTimes }: { prayerTimes: any }) => {
+
+  console.log(prayerTimes)
+
   return (
     <div className="w-full p-4 text-gray-200 bg-gray-900 rounded-sm md:px-6">
       <h4 className="font-semibold text-center">London <span>(23 Oct)</span></h4>

@@ -16,11 +16,15 @@
   "dependencies": {
     "@mantine/core": "^3.1.0",
     "@mantine/hooks": "^3.1.0",
+    "cors": "^2.8.5",
+    "dayjs": "^1.10.7",
     "next": "^12.0.0",
+    "next-connect": "^0.11.0",
     "next-seo": "^4.28.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
+    "react-query": "^3.31.0",
     "styled-jsx-plugin-postcss": "^4.0.1"
   },
   "devDependencies": {
