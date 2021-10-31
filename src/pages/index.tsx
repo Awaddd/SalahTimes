@@ -8,7 +8,7 @@ import React from 'react';
 const Index = () => {
   return (
     <Main meta={<Meta />}>
-      <main className="h-full px-3 text-gray-200 bg-gray-dark md:py-10">
+      <main className="h-full px-3 text-gray-200 md:py-10">
         <div className="max-w-screen-md md:mx-auto">
           <section className="mt-6 text-center md:mt-0">
             <h2 className="text-2xl font-bold">-10:47:59</h2>
