@@ -1,6 +1,5 @@
 # Salah Times
 
-Install
 ## Install
 ```
 npm install
