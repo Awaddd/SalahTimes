@@ -1,10 +1,17 @@
-Salah Times
+# Salah Times
 
 Install
-# npm install
+## Install
+```
+npm install
+```
 
-Run locally
-# npm run dev
+## Run
+```
+npm run dev
+```
 
-Build for production
-# npm run build
+## Build
+```
+npm run build
+```
