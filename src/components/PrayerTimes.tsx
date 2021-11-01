@@ -3,9 +3,6 @@ import { getPrayerTimes } from '../services/getPrayerTimesService';
 import { dateState } from '../state/global';
 import { useRecoilValue } from 'recoil';
 import { Loader } from '@mantine/core';
-import dayjs from 'dayjs';
-// @ts-ignore: Unreachable code error
-import convertTime from "convert-time";
 
 const PrayerTimes = () => {
 
@@ -17,7 +14,6 @@ const PrayerTimes = () => {
 
   const times = data.times
   const current = times["2021-11-01"]
-  current.dhuhr = dayjs(`2021-11-01 ${current.dhuhr}`).isAfter(date) ? convertTime(current.dhuhr + 'am') : convertTime(current.dhuhr + 'pm')
 
   return (
     <div className="w-full p-4 text-gray-200 bg-gray-900 rounded-sm md:px-6">
@@ -38,9 +34,9 @@ const PrayerTimes = () => {
             <li>{current.fajr}</li>
             <li>{current.sunrise}</li>
             <li>{current.dhuhr}</li>
-            <li>{convertTime(current.asr + 'pm')}</li>
-            <li>{convertTime(current.magrib + 'pm')}</li>
-            <li>{convertTime(current.isha + 'pm')}</li>
+            <li>{current.asr}</li>
+            <li>{current.magrib}</li>
+            <li>{current.isha}</li>
           </ul>
         )}
       </main>
