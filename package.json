@@ -16,6 +16,7 @@
   "dependencies": {
     "@mantine/core": "^3.1.0",
     "@mantine/hooks": "^3.1.0",
+    "clsx": "^1.1.1",
     "convert-time": "^0.3.0",
     "cors": "^2.8.5",
     "dayjs": "^1.10.7",
