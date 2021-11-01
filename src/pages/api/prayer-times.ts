@@ -5,7 +5,7 @@ import { prayerTimesApiKey } from "./../../../config.json";
 import { NextApiRequest, NextApiResponse } from "next";
 import dayjs from "dayjs";
 
-const handler = nc().use(cors()).get(async (req: NextApiRequest, res: NextApiResponse) => {
+const handler = nc().use(cors()).get(async (_: NextApiRequest, res: NextApiResponse) => {
 
   const response = await fetch(
     `https://www.londonprayertimes.com/api/times/?format=json&key=${prayerTimesApiKey}&year=${dayjs().year()}&month=${
