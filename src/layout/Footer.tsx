@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Footer = () => (
   <div className="w-full antialiased">
-    <div className="grid py-8 text-sm text-center text-gray-200">
+    <div className="grid py-3 text-sm text-center text-gray-200">
       <div className="mx-auto my-2">
         <Link href="https://github.com/Awaddd">
           <span className="cursor-pointer"><FiGithub /></span>
