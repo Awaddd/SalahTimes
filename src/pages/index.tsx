@@ -1,11 +1,20 @@
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
 import PrayerTimes from '../components/PrayerTimes'
+import { dateState } from '../state/global';
+import { useSetRecoilState } from 'recoil';
 
 import { Button } from '@mantine/core';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 
 const Index = () => {
+
+  const setDate = useSetRecoilState(dateState)
+
+  const deincrementDate = () => setDate(date => date.date() > 1 ? date.subtract(1, 'day') : date)
+
+  const incrementDate = () => setDate(date => date.date() < date.daysInMonth() ? date.add(1, 'day') : date)
+
 
   return (
     <Main meta={<Meta />}>
@@ -20,10 +29,10 @@ const Index = () => {
           </section>
           <section className="grid grid-cols-2 gap-2 mt-2">
             <div className="grid">
-              <Button leftIcon={<FiArrowLeft />} className="bg-gray-900 rounded-sm h-9">Previous</Button>
+              <Button leftIcon={<FiArrowLeft />} className="bg-gray-900 rounded-sm h-9" onClick={deincrementDate}>Previous</Button>
             </div>
             <div className="grid">
-              <Button rightIcon={<FiArrowRight />} className="bg-gray-900 rounded-sm h-9">Next</Button>
+              <Button rightIcon={<FiArrowRight />} className="bg-gray-900 rounded-sm h-9" onClick={incrementDate}>Next</Button>
             </div>
           </section>
         </div>
