@@ -1,15 +1,11 @@
 import { Meta } from '../layout/Meta';
 import { Main } from '../templates/Main';
-import { useQuery } from 'react-query'
 import PrayerTimes from '../components/PrayerTimes'
 
 import { Button } from '@mantine/core';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
-import { getPrayerTimes } from '../services/getPrayerTimesService';
 
-const Index = (props: { prayerTimes: any }) => {
-
-  const { data } = useQuery('prayerTimes', getPrayerTimes, { initialData: props.prayerTimes })
+const Index = () => {
 
   return (
     <Main meta={<Meta />}>
@@ -20,7 +16,7 @@ const Index = (props: { prayerTimes: any }) => {
             <h3 className="font-semibold">05:12</h3>
           </section>
           <section className="mt-6 md:mt-8">
-            <PrayerTimes prayerTimes={data} />
+            <PrayerTimes />
           </section>
           <section className="grid grid-cols-2 gap-2 mt-2">
             <div className="grid">
@@ -35,10 +31,5 @@ const Index = (props: { prayerTimes: any }) => {
     </Main>
   );
 };
-
-export async function getServerSideProps() {
-  const prayerTimes = await getPrayerTimes()
-  return { props: { prayerTimes } }
-}
 
 export default Index;
