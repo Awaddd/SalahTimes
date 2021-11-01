@@ -1,16 +1,29 @@
 import { useQuery } from 'react-query'
 import { getPrayerTimes } from '../services/getPrayerTimesService';
+import { dateState } from '../state/global';
+import { useRecoilValue } from 'recoil';
 import { Loader } from '@mantine/core';
+import dayjs from 'dayjs';
+// @ts-ignore: Unreachable code error
+import convertTime from "convert-time";
 
 const PrayerTimes = () => {
 
+  const date = useRecoilValue(dateState)
+
   const { error, isLoading, data } = useQuery('prayerTimes', getPrayerTimes)
   if (error) return <p className="font-semibold text-red-400">Failed to fetch prayer times, please try again later</p>
-  console.log(data)
+  if (!data) return <></>
+
+  const times = data.times
+  const current = times["2021-11-01"]
+  current.dhuhr = dayjs(`2021-11-01 ${current.dhuhr}`).isAfter(date) ? convertTime(current.dhuhr + 'am') : convertTime(current.dhuhr + 'pm')
 
   return (
     <div className="w-full p-4 text-gray-200 bg-gray-900 rounded-sm md:px-6">
-      <h4 className="font-semibold text-center">London <span>(23 Oct)</span></h4>
+      <h4 className="font-semibold text-center">London</h4>
+      <h3 className="text-center text-blue-400">{date.format('DD MMMM')}</h3>
+      
       <main className="grid grid-cols-2 px-2 mt-4">
         <ul className="grid gap-1">
           <li>Fajr</li>
@@ -22,18 +35,28 @@ const PrayerTimes = () => {
         </ul>
         {isLoading ? placeholder : (
           <ul className="grid gap-1 justify-self-end">
-            <li>05:12</li>
-            <li>06:49</li>
-            <li>11:49</li>
-            <li>14:07</li>
-            <li>16:38</li>
-            <li>18:05</li>
+            <li>{current.fajr}</li>
+            <li>{current.sunrise}</li>
+            <li>{current.dhuhr}</li>
+            <li>{convertTime(current.asr + 'pm')}</li>
+            <li>{convertTime(current.magrib + 'pm')}</li>
+            <li>{convertTime(current.isha + 'pm')}</li>
           </ul>
         )}
       </main>
     </div>
   )
 }
+
+/*
+format reference
+05:12
+06:49
+11:49
+14:07
+16:38
+18:05
+*/
 
 const placeholder = (
   <ul className="grid gap-1 justify-self-end">
