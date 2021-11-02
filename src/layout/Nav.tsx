@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiBell, FiBellOff } from "react-icons/fi"
+import { ActionIcon } from "@mantine/core";
 
 const Nav = () => {
 
@@ -7,8 +8,12 @@ const Nav = () => {
 
   return (
     <nav className="grid w-full grid-cols-2 p-3 antialiased text-gray-200 md:px-6 bg-gray-darkest">
-      <div className="font-semibold">Salah<span className="text-blue-400">Times</span></div>
-      <button className="text-blue-400 justify-self-end" onClick={() => setNotificationsOn(current => !current)}>{notificationsOn ? <FiBell /> : <FiBellOff />}</button>
+      <div className="self-end font-semibold">Salah<span className="text-blue-400">Times</span></div>
+      <div className="justify-self-end">
+        <ActionIcon variant="transparent" className="text-gray-200" onClick={() => setNotificationsOn(current => !current)}>
+          {notificationsOn ? <FiBell /> : <FiBellOff />}
+        </ActionIcon>
+      </div>
     </nav>
   )
 };
