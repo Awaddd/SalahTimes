@@ -66,7 +66,7 @@ format reference
 const placeholder = (
   <ul className="grid gap-1 justify-self-end">
     {[0, 0, 0, 0, 0, 0].map((_, k) => (
-      <li key={k}><Loader size="sm" color="white" variant="dots" /></li>
+      <li key={k} className="grid items-center"><Loader size="sm" color="white" variant="dots" /></li>
     ))}
   </ul>
 )
