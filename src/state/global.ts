@@ -2,6 +2,6 @@ import dayjs from "dayjs"
 import { atom } from "recoil"
 
 export const dateState = atom({
-  key: 'date',
+  key: 'dateState',
   default: dayjs().startOf('day')
 })
