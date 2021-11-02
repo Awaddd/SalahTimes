@@ -1,16 +1,22 @@
 import { AppProps } from 'next/app';
 import { RecoilRoot } from 'recoil';
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query'
+import { useState } from 'react';
 import '../styles/main.css';
 
-const queryClient = new QueryClient()
+const MyApp = ({ Component, pageProps }: AppProps) => {
 
-const MyApp = ({ Component, pageProps }: AppProps) => (
-  <RecoilRoot>
-    <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
-    </QueryClientProvider>
-  </RecoilRoot>
-);
+  const [queryClient] = useState(() => new QueryClient())
+
+  return (
+    <RecoilRoot>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <Component {...pageProps} />
+        </Hydrate>
+      </QueryClientProvider>
+    </RecoilRoot>
+  )
+}
 
 export default MyApp;

@@ -1,18 +1,23 @@
-import { useQuery } from 'react-query'
-import { getPrayerTimes } from '../services/getPrayerTimesService';
 import { dateState } from '../state/global';
 import { useRecoilValue, useResetRecoilState } from 'recoil';
 
 import { Loader, ActionIcon } from '@mantine/core';
 import { FiRefreshCw } from 'react-icons/fi'
 
-const PrayerTimes = () => {
+export interface PrayerTimesInterface {
+  data: {
+    times: {
+      [key: string]: any
+    }
+  },
+  isLoading?: boolean
+}
+
+const PrayerTimes = ({ data, isLoading }: PrayerTimesInterface) => {
 
   const date = useRecoilValue(dateState)
   const resetDate = useResetRecoilState(dateState)
 
-  const { error, isLoading, data } = useQuery('prayerTimes', getPrayerTimes)
-  if (error) return <p className="font-semibold text-red-400">Failed to fetch prayer times, please try again later</p>
   if (!data) return <></>
 
   return (
