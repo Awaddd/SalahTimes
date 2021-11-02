@@ -15,9 +15,6 @@ const PrayerTimes = () => {
   if (error) return <p className="font-semibold text-red-400">Failed to fetch prayer times, please try again later</p>
   if (!data) return <></>
 
-  const times = data.times
-  const current = times["2021-11-01"]
-
   return (
     <div className="w-full p-4 text-gray-200 bg-gray-900 rounded-sm md:px-6">
       <h4 className="font-semibold text-center">London</h4>
@@ -38,12 +35,12 @@ const PrayerTimes = () => {
         </ul>
         {isLoading ? placeholder : (
           <ul className="grid gap-1 justify-self-end">
-            <li>{current.fajr}</li>
-            <li>{current.sunrise}</li>
-            <li>{current.dhuhr}</li>
-            <li>{current.asr}</li>
-            <li>{current.magrib}</li>
-            <li>{current.isha}</li>
+            <li>{data.times[date.format('YYYY-MM-DD')].fajr}</li>
+            <li>{data.times[date.format('YYYY-MM-DD')].sunrise}</li>
+            <li>{data.times[date.format('YYYY-MM-DD')].dhuhr}</li>
+            <li>{data.times[date.format('YYYY-MM-DD')].asr}</li>
+            <li>{data.times[date.format('YYYY-MM-DD')].magrib}</li>
+            <li>{data.times[date.format('YYYY-MM-DD')].isha}</li>
           </ul>
         )}
       </main>
