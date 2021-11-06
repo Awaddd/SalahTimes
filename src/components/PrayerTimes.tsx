@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import dayjs from 'dayjs';
 import { Loader, ActionIcon } from '@mantine/core';
 import { FiRefreshCw } from 'react-icons/fi'
+import { convertTime } from '../utils/helpers';
 
 export interface PrayerTimesInterface {
   data: {
@@ -21,6 +22,17 @@ const PrayerTimes = ({ data, isLoading }: PrayerTimesInterface) => {
   const resetDate = useResetRecoilState(dateState)
 
   if (!data) return <></>
+
+  const fajr = convertTime(`${data.times[date.format('YYYY-MM-DD')].fajr} AM`)
+  const sunrise = convertTime(`${data.times[date.format('YYYY-MM-DD')].sunrise} AM`)
+
+  const duhrDate = dayjs(`${date.format('YYYY-MM-DD')} ${data.times[date.format('YYYY-MM-DD')].dhuhr}`);
+  const cap = dayjs(`${date.format('YYYY-MM-DD')} 11:00`)
+  const duhr = convertTime(`${data.times[date.format('YYYY-MM-DD')].dhuhr} ${duhrDate > cap ? 'AM' : 'PM'}`)
+
+  const asr = convertTime(`${data.times[date.format('YYYY-MM-DD')].asr} PM`)
+  const maghrib = convertTime(`${data.times[date.format('YYYY-MM-DD')].magrib} PM`)
+  const isha = convertTime(`${data.times[date.format('YYYY-MM-DD')].isha} PM`)
 
   return (
     <div className="w-full p-4 text-gray-200 bg-gray-900 rounded-sm md:px-6">
@@ -42,28 +54,18 @@ const PrayerTimes = ({ data, isLoading }: PrayerTimesInterface) => {
         </ul>
         {isLoading ? placeholder : (
           <ul className="grid gap-1 justify-self-end">
-            <li>{data.times[date.format('YYYY-MM-DD')].fajr}</li>
-            <li>{data.times[date.format('YYYY-MM-DD')].sunrise}</li>
-            <li>{data.times[date.format('YYYY-MM-DD')].dhuhr}</li>
-            <li>{data.times[date.format('YYYY-MM-DD')].asr}</li>
-            <li>{data.times[date.format('YYYY-MM-DD')].magrib}</li>
-            <li>{data.times[date.format('YYYY-MM-DD')].isha}</li>
+            <li>{fajr}</li>
+            <li>{sunrise}</li>
+            <li>{duhr}</li>
+            <li>{asr}</li>
+            <li>{maghrib}</li>
+            <li>{isha}</li>
           </ul>
         )}
       </main>
     </div>
   )
 }
-
-/*
-format reference
-05:12
-06:49
-11:49
-14:07
-16:38
-18:05
-*/
 
 const placeholder = (
   <ul className="grid gap-1 justify-self-end">
