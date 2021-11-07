@@ -10,7 +10,7 @@ type IMetaProps = {
   canonical?: string;
 };
 
-const Meta = ( { title = "Salah Times", description = "Prayer Times", canonical } : IMetaProps) => {
+const Meta = ({ title = "Salah Times", description = "Prayer Times", canonical }: IMetaProps) => {
   const router = useRouter();
 
   return (
@@ -22,6 +22,9 @@ const Meta = ( { title = "Salah Times", description = "Prayer Times", canonical 
           content="width=device-width,initial-scale=1"
           key="viewport"
         />
+
+        <link rel="manifest" href="/manifest.json" />
+
         <link
           rel="apple-touch-icon"
           href={`${router.basePath}/apple-touch-icon.png`}
