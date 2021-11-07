@@ -8,7 +8,7 @@ type IMainProps = {
   classes?: string;
 };
 
-const base = "flex flex-col w-full h-screen mx-auto antialiased bg-gray-dark"
+const base = "flex flex-col w-full h-screen mx-auto antialiased bg-dark"
 
 const Main = ({ meta, children, classes }: IMainProps) => {
 

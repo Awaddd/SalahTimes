@@ -7,8 +7,8 @@ const Nav = () => {
   const [notificationsOn, setNotificationsOn] = useState<boolean>(true)
 
   return (
-    <nav className="grid w-full grid-cols-2 p-3 antialiased text-gray-200 md:px-6 bg-gray-darkest">
-      <div className="self-end font-semibold">Salah<span className="text-blue-400">Times</span></div>
+    <nav className="grid w-full grid-cols-2 p-3 antialiased text-gray-200 md:px-6 bg-darkest">
+      <div className="self-end font-semibold">Salah<span className="text-primary">Times</span></div>
       <div className="justify-self-end">
         <ActionIcon variant="transparent" className="text-gray-200" onClick={() => setNotificationsOn(current => !current)}>
           {notificationsOn ? <FiBell /> : <FiBellOff />}

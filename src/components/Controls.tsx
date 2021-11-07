@@ -33,6 +33,6 @@ function Controls() {
 }
 
 const activeButton = "bg-gray-900 rounded-sm h-9"
-const disabledButton ="bg-gray-darkest"
+const disabledButton ="bg-darkest"
 
 export default Controls

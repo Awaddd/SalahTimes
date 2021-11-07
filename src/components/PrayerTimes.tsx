@@ -37,8 +37,8 @@ const PrayerTimes = ({ data, isLoading }: PrayerTimesInterface) => {
   return (
     <div className="w-full p-4 text-gray-200 bg-gray-900 rounded-sm md:px-6">
       <h4 className="font-semibold text-center">London</h4>
-      <h3 className="relative text-center text-blue-400">
-        <span className={clsx("mr-2", date.format('DD/MM/YYYY') == dayjs().startOf('day').format('DD/MM/YYYY') && "text-green-400")}>{date.format('DD MMMM')}</span>
+      <h3 className="relative text-center text-accent">
+        <span className={clsx("mr-2", date.format('DD/MM/YYYY') == dayjs().startOf('day').format('DD/MM/YYYY') && "text-primary")}>{date.format('DD MMMM')}</span>
         <ActionIcon variant="transparent" className="absolute inline text-gray-200" onClick={resetDate}>
           <FiRefreshCw />
         </ActionIcon>
