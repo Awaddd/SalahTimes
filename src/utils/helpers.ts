@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 export const convertTime = (twelveHourTime: string | number) => {
   if (twelveHourTime == null) return
 
