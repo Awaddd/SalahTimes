@@ -21,14 +21,14 @@ function Controls() {
   }, [date, disabled])
 
   return (
-    <>
+    <div className="grid grid-cols-2 gap-2 mt-2">
       <div className="grid">
         <Button leftIcon={<FiArrowLeft />} className={clsx(activeButton, disabled === 'prev' && disabledButton)} onClick={deincrementDate}>Previous</Button>
       </div>
       <div className="grid">
         <Button rightIcon={<FiArrowRight />} className={clsx(activeButton, disabled === 'next' && disabledButton)} onClick={incrementDate}>Next</Button>
       </div>
-    </>
+    </div>
   )
 }
 
